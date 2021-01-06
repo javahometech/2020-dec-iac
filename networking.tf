@@ -6,6 +6,7 @@ resource "aws_vpc" "example" {
   tags = {
     Name       = "myapp-vpc-${local.ws}"
     Department = "Finance"
+    CostCenter = "JH10AB190"
   }
 }
 
@@ -60,7 +61,7 @@ resource "aws_route_table_association" "a" {
 resource "aws_subnet" "private" {
   count             = length(local.azs)
   vpc_id            = aws_vpc.example.id
-  cidr_block        = cidrsubnet(var.vpc_cidr, 8, count.index+length(local.azs))
+  cidr_block        = cidrsubnet(var.vpc_cidr, 8, count.index + length(local.azs))
   availability_zone = local.azs[count.index]
   tags = {
     Name       = "private-${count.index + 1}-${local.ws}"

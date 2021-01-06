@@ -1,0 +1,1 @@
+s3_bucket_arn = "arn:aws:s3:::javahome2020.prod.in.k8s"
