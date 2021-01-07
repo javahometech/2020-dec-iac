@@ -1,16 +1,16 @@
-resource "aws_instance" "web" {
-  ami                         = lookup(var.ami_ids, var.region)
-  instance_type               = "t2.micro"
-  subnet_id                   = aws_subnet.public.*.id[0]
-  associate_public_ip_address = true
-  vpc_security_group_ids      = [aws_security_group.web_sg.id]
-  key_name                    = "oct-7am"
-  iam_instance_profile        = aws_iam_instance_profile.ec2_s3_put_profile.id
-  user_data                   = file("apache.sh")
-  tags = {
-    Name = "HelloWorld-${local.ws}"
-  }
-}
+# resource "aws_instance" "web" {
+#   ami                         = lookup(var.ami_ids, var.region)
+#   instance_type               = "t2.micro"
+#   subnet_id                   = aws_subnet.public.*.id[0]
+#   associate_public_ip_address = true
+#   vpc_security_group_ids      = [aws_security_group.web_sg.id]
+#   key_name                    = "oct-7am"
+#   iam_instance_profile        = aws_iam_instance_profile.ec2_s3_put_profile.id
+#   user_data                   = file("apache.sh")
+#   tags = {
+#     Name = "HelloWorld-${local.ws}"
+#   }
+# }
 
 # create security group
 

@@ -18,7 +18,7 @@ resource "aws_elb" "bar" {
     interval            = 30
   }
   security_groups             = [aws_security_group.elb_sg.id]
-  instances                   = [aws_instance.web.id]
+  # instances                   = [aws_instance.web.id]
   cross_zone_load_balancing   = true
   idle_timeout                = 400
   connection_draining         = true
